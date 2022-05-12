@@ -21,8 +21,8 @@ _Para ejecutar migraciones
 php artisan migrate
 ```
 
-_Este comando creará las claves de cifrado necesarias para generar tokens de acceso seguro
-
 ```
-php artisan passport:install
+php artisan passport:install //Este comando creará las claves de cifrado necesarias para generar tokens de acceso seguro
+php artisan serve
+
 ```
