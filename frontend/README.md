@@ -13,7 +13,7 @@ _Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener 
 npm install
 ```
 
-### Compila y recarga en caliente para el desarrollo
+### Compila para el desarrollo
 ```
 npm run serve
 ```
