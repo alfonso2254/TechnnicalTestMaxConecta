@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\tasks;
+use App\Models\Tasks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +15,7 @@ class TasksController extends Controller
      */
     public function index()
     {
-        return tasks::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
+        return Tasks::where('user_id', Auth::id())->orderBy('created_at', 'desc')->get();
     }
 
     /**
@@ -30,7 +30,7 @@ class TasksController extends Controller
             'name' => 'required|string',
         ]);
 
-        tasks::create([
+        Tasks::create([
             'name' => $request->name,
             'description' => $request->description,
             'completed' => $request->completed,
@@ -45,18 +45,18 @@ class TasksController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\tasks  $tasks
+     * @param  \App\Models\Tasks  $Tasks
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        return tasks::find($id);
+        return Tasks::find($id);
     }
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\tasks  $tasks
+     * @param  \App\Models\Tasks  $Tasks
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -65,9 +65,9 @@ class TasksController extends Controller
             'name' => 'required|string'
         ]);
 
-        $tasks = tasks::find($id);
+        $Tasks = Tasks::find($id);
 
-        $tasks->update([
+        $Tasks->update([
             'name' => $request->name,
             'description' => $request->description,
             'completed' => $request->completed,
@@ -81,13 +81,13 @@ class TasksController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\tasks  $tasks
+     * @param  \App\Models\Tasks  $Tasks
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $tasks = tasks::find($id);
-        $tasks->delete();
+        $Tasks = Tasks::find($id);
+        $Tasks->delete();
 
         return response()->json([
             'message' => 'Successfully deleted task!'
